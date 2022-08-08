@@ -1,0 +1,35 @@
+server:
+  port : 8081
+
+eureka:
+  client:
+    fetchRegistry: true
+    register-with-eureka: false
+    service-url:
+      defaultZone: http://localhost:8080/eureka
+
+spring:
+  application:
+    name: gateway-service
+  main:
+    web-application-type: reactive
+  cloud:
+    gateway:
+      routes:
+        -   id: customer-score-service
+            uri: lb://customer-score-service
+            predicates:
+              - Path=/
+        -   id:  credit-score-service
+            uri: lb:// credit-score-service
+            predicates:
+              - Path=/
+      discovery:
+        locator:
+          lower-case-service-id: true
+          enabled: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include= *:

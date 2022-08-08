@@ -1,0 +1,30 @@
+logging:
+  file:
+    name: ./log/credit.log
+  level:
+    root: info
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8080/eureka
+server:
+  port: 8083
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/credit_score_service
+    jpa:
+      show-sql: true
+  application:
+    name: credit-score-service
+  jackson:
+    serialization:
+      indent_output: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:*
+
