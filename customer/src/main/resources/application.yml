@@ -1,38 +1,38 @@
-logging:
-  file:
-    name: ./log/customer.log
-  level:
-    root: info
 eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8080/eureka
+    client:
+        fetch-registry: true
+        register-with-eureka: true
+        service-url:
+            defaultZone: http://localhost:8080/eureka
+logging:
+    file:
+        name: ./log/customer-service.log
+    level:
+        org:
+            hibernate:
+                SQL: DEBUG
+                type: TRACE
+        root: INFO
 server:
-  port: 8082
-
+    port: 8082
 spring:
-  cloud:
-    config:
-      enabled: false
-  datasource:
-    username: root
-    url: jdbc:mysql://localhost:3306/customer?createDatabaseIfNotExist=true&autoReconnect=true&useSSL=false&allowPublicKeyRetrieval=true
-    password: root
-  jpa:
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.MySQL5Dialect
-    hibernate:
-      ddl-auto: update
-  application:
-    name: customer-service
-  jackson:
-    serialization:
-      indent_output: true
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include:*
-
+    application:
+        name: customer-service
+    datasource:
+        password: mysqlpw
+        url: jdbc:mysql://localhost:49154/customer_service?createDatabaseIfNotExist=true&autoReconnect=true&useSSL=false&allowPublicKeyRetrieval=true
+        username: root
+    jackson:
+        serialization:
+            indent_output: true
+    jpa:
+        hibernate:
+            ddl-auto: create-drop
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.MySQL5Dialect
+        show:
+            sql: true
+springdoc:
+    api-docs:
+        path: /api-docs
