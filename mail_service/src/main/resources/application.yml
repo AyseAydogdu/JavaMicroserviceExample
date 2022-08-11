@@ -1,0 +1,39 @@
+server:
+    port: 8084
+spring:
+    application:
+        name: mail-service
+    datasource:
+        password: postgrespw
+        url: jdbc:postgresql://localhost:49154/emaildb
+        username: postgres
+    jpa:
+        hibernate:
+            ddl-auto: create-drop
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.PostgreSQLDialect
+                format_sql: true
+        show-sql: true
+    mail:
+        host: smtp.gmail.com
+        password: dmhmrxkmhtrpwmva
+        port: 587
+        properties:
+            mail:
+                smtp:
+                    auth: true
+                    starttls:
+                        enable: true
+        username: 'ayseaydogdu122@gmail.com'
+
+eureka:
+    client:
+        service-url:
+            defaultZone: http://localhost:8080/eureka
+        fetch-registry: true
+        register-with-eureka: true
+        enabled: false
+
+
+
