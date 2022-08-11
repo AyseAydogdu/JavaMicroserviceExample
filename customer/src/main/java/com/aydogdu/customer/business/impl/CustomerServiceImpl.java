@@ -7,10 +7,14 @@ import com.aydogdu.customer.data.repository.CustomerRepository;
 import com.aydogdu.customer.exception.CustomerAlreadyExistException;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.http.HttpEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
@@ -19,11 +23,17 @@ import java.util.List;
  * @Date 7/20/2022 10:36 PM
  */
 @Service
-@RequiredArgsConstructor
-public class CustomerServiceImpl implements CustomerService {
 
-    private final CustomerRepository customerRepository;
+public class CustomerServiceImpl implements CustomerService {
+     @Autowired
+     CustomerRepository customerRepository;
+     @Autowired
+     RestTemplate restTemplate ;
+    @Autowired
     ModelMapper modelMapper;
+    @Value("${uri.credit-score-service}")
+    String url;
+
     public List<CustomerDto> findAllCustomers() {
        return entitytoDtoList(customerRepository.findAll());
     }
@@ -43,9 +53,19 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     public CustomerDto saveCustomer(CustomerDto customerDto) {
+
+        //CustomerDto tempCustomer = CustomerDto.builder().idNumber(customerDto.getIdNumber()).build();
+
+        HttpEntity<CustomerDto> request = new HttpEntity<>(null);
         if(customerRepository.findByIdNumber(customerDto.getIdNumber())== null)
         {
-            return entityToDto(customerRepository.save(dtoToEntity(customerDto)));
+            CustomerDto savedCustomerDto= entityToDto(customerRepository.save(dtoToEntity(customerDto)));
+            if(savedCustomerDto != null)
+            {
+                restTemplate.postForObject(url+"/"+customerDto.getIdNumber(),request,String.class);
+            }
+            return savedCustomerDto;
+
         }
         else {
             throw new CustomerAlreadyExistException("This customer already exist");
@@ -64,4 +84,13 @@ public class CustomerServiceImpl implements CustomerService {
 
     }
 
+    public CustomerDto findCustomerByIdNumber(Long idNumber) {
+        if (customerRepository.findByIdNumber(idNumber) == null) {
+
+            throw new EmptyResultDataAccessException(0);
+        } else {
+           return entityToDto(customerRepository.findByIdNumber(idNumber));
+
+        }
+    }
 }

@@ -16,12 +16,16 @@ spring:
   cloud:
     gateway:
       routes:
-        -   id: customer-score-service
-            uri: lb://customer-score-service
+        -   id: customer-service
+            uri: lb://customer-service
             predicates:
               - Path=/
         -   id:  credit-score-service
             uri: lb:// credit-score-service
+            predicates:
+              - Path=/
+        -   id: mail-service
+            uri: lb:// mail-service
             predicates:
               - Path=/
       discovery:

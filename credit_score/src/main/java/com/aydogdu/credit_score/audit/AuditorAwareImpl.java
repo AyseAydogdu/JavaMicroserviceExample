@@ -1,4 +1,4 @@
-package com.aydogdu.creditscore.audit;
+package com.aydogdu.credit_score.audit;
 
 /**
  * @Author Ayse Aydogdu

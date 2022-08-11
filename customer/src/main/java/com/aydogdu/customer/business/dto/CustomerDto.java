@@ -25,4 +25,5 @@ public class CustomerDto {
     String name;
 
     Integer salary;
+    String mail;
 }

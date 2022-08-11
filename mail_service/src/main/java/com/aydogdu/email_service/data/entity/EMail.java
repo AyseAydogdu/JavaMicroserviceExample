@@ -15,8 +15,8 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Data
 @Builder
-@Entity(name = "email_table")
-//@Table(name = "email_table")
+@Entity
+@Table(name = "email_table")
 public class EMail {
 
     @Id

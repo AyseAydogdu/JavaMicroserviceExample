@@ -1,4 +1,4 @@
-package com.aydogdu.creditscore.bean;
+package com.aydogdu.credit_score.bean;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;

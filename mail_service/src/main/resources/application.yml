@@ -5,7 +5,7 @@ spring:
         name: mail-service
     datasource:
         password: postgrespw
-        url: jdbc:postgresql://localhost:49154/emaildb
+        url: jdbc:postgresql://localhost:49162/emaildb
         username: postgres
     jpa:
         hibernate:
@@ -29,11 +29,10 @@ spring:
 
 eureka:
     client:
-        service-url:
-            defaultZone: http://localhost:8080/eureka
         fetch-registry: true
         register-with-eureka: true
-        enabled: false
+        service-url:
+            defaultZone: http://localhost:8080/eureka
 
 
 

@@ -21,6 +21,8 @@ spring:
   jackson:
     serialization:
       indent_output: true
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
 
 management:
   endpoints:
@@ -28,3 +30,6 @@ management:
       exposure:
         include:*
 
+url:
+  mail-service: http://localhost:8081/mail-service/mail
+  customer-service: http://localhost:8081/customer-service/customer

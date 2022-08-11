@@ -1,4 +1,4 @@
-package com.aydogdu.creditscore.data.entity;
+package com.aydogdu.credit_score.data.entity;
 
 
 import lombok.AllArgsConstructor;

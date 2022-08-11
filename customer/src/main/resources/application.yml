@@ -20,7 +20,7 @@ spring:
         name: customer-service
     datasource:
         password: mysqlpw
-        url: jdbc:mysql://localhost:49154/customer_service?createDatabaseIfNotExist=true&autoReconnect=true&useSSL=false&allowPublicKeyRetrieval=true
+        url: jdbc:mysql://localhost:49164/customer_service?createDatabaseIfNotExist=true&autoReconnect=true&useSSL=false&allowPublicKeyRetrieval=true
         username: root
     jackson:
         serialization:
@@ -36,3 +36,6 @@ spring:
 springdoc:
     api-docs:
         path: /api-docs
+
+uri:
+    credit-score-service : http://localhost:8081/credit-score-service/credit-score

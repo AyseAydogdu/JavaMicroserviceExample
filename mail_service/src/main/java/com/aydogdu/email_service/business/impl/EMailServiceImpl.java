@@ -15,6 +15,7 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -63,13 +64,13 @@ public class EMailServiceImpl implements EMailService {
         return modelMapper.map( emailDto,EMail.class);
     }
     public List<EMailDto> entityToDtoList(List<EMail> emails){
-        List<EMailDto> emailDtos = null;
+        List<EMailDto> emailDtos = new ArrayList<>();
         for (EMail email:emails) {
             emailDtos.add(entityToDto(email));
         }
         return emailDtos;
     }
     public List<EMailDto> findAllEMail() {
-       return entityToDtoList((List<EMail>) emailRepository.findAll());
+       return entityToDtoList(emailRepository.findAll());
    }
 }

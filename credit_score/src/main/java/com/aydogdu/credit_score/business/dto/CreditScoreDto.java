@@ -1,4 +1,4 @@
-package com.aydogdu.creditscore.business.dto;
+package com.aydogdu.credit_score.business.dto;
 
 
 import lombok.AllArgsConstructor;

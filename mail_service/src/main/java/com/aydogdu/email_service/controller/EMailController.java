@@ -19,13 +19,13 @@ public class EMailController {
 
     private final EMailServiceImpl emailService;
 
-    @PostMapping()
+    @PostMapping
     public ResponseEntity<String> sendMail(@RequestBody EMailDto emailDto){
         return ResponseEntity.ok( emailService.sendMail(emailDto));
     }
 
-  //  @GetMapping
-  //  public ResponseEntity<Iterable<EMailDto>> findAllEMail(){
-   //     return ResponseEntity.ok(emailService.findAllEMail());
-   // }
+    @GetMapping
+    public ResponseEntity<List<EMailDto>> findAllEMail(){
+        return ResponseEntity.ok(emailService.findAllEMail());
+    }
 }

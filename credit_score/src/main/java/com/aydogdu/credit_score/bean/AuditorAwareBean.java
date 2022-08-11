@@ -1,6 +1,6 @@
-package com.aydogdu.creditscore.bean;
+package com.aydogdu.credit_score.bean;
 
-import com.aydogdu.creditscore.audit.AuditorAwareImpl;
+import com.aydogdu.credit_score.audit.AuditorAwareImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.domain.AuditorAware;

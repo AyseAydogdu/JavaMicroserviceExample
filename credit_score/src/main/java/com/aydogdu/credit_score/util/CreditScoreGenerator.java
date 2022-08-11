@@ -1,4 +1,4 @@
-package com.aydogdu.creditscore.util;
+package com.aydogdu.credit_score.util;
 
 import org.springframework.stereotype.Component;
 

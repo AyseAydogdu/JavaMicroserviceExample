@@ -20,24 +20,28 @@ public class CustomerController {
 
     private final CustomerServiceImpl customerServiceImpl;
 
-    // https://locallhost:8090/customer
+    // https://locallhost:8082/customer
     @GetMapping
     public ResponseEntity<List<CustomerDto>> findAllCustomers(){
         return ResponseEntity.ok(customerServiceImpl.findAllCustomers());
     }
 
-    // https://locallhost:8090/customer
-    @PostMapping()
+    // https://locallhost:8082/customer
+    @PostMapping
     public ResponseEntity<CustomerDto> saveCustomer(@RequestBody CustomerDto customerDto)
     {
         return ResponseEntity.ok(customerServiceImpl.saveCustomer(customerDto));
     }
 
-    // https://locallhost:8090/customer/idNumber
+    // https://locallhost:8082/customer/idNumber
     @DeleteMapping("{idNumber}")
     public ResponseEntity<String> deleteCustomerByIdNumber(@PathVariable Long idNumber)
     {
         return ResponseEntity.ok(customerServiceImpl.deleteCustomerByIdNumber(idNumber));
     }
-
+    // https://locallhost:8082/customer/idNumber
+    @GetMapping("{idNumber}")
+    public ResponseEntity<CustomerDto> findCustomerByIdNumber(@PathVariable Long idNumber){
+        return ResponseEntity.ok(customerServiceImpl.findCustomerByIdNumber(idNumber));
+    }
 }

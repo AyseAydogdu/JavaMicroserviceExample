@@ -31,4 +31,6 @@ public class Customer {
 
     Integer salary;
 
+    String mail;
+
 }

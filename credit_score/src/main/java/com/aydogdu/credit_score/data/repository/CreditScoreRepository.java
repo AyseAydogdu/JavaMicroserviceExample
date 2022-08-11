@@ -1,6 +1,6 @@
-package com.aydogdu.creditscore.data.repository;
+package com.aydogdu.credit_score.data.repository;
 
-import com.aydogdu.creditscore.data.entity.CreditScore;
+import com.aydogdu.credit_score.data.entity.CreditScore;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
