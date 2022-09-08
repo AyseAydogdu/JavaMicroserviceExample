@@ -1,6 +1,6 @@
-# MicroservicesExample
+# Microservice Based Loan Application System
 
-#### Microservice based bank loan application application was developed using Java Spring Framework, MySQL, MongoDB and PostgreSQL. Customers apply for a loan and the credit score is calculated and the result is sent to the customer.
+#### Microservice based bank loan application was developed using Java Spring Framework, MySQL, MongoDB and PostgreSQL. Customers apply for a loan and the credit score is calculated and the result is sent to the customer.
 
 ### Details
 
